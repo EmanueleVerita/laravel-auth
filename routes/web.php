@@ -28,6 +28,8 @@ Route::prefix('admin')
 
     Route::get('/dashboard', [AdminMainController::class, 'dashboard'])->name('dashboard');
 
+    Route::get('posts' , PostController::class);
+
 });
 
 require __DIR__.'/auth.php';
