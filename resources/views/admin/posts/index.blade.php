@@ -29,7 +29,25 @@
                                 {{ $post->Slug }}
                             </td>
 
-                            <td></td>
+                            <td>
+                                <a href="{{ route('admin.posts.show' , ['post' => $post->id]) }}" class="btn btn-primary">
+                                    Show
+                                </a>
+    
+                                <a href="{{ route('admin.posts.edit' , ['post' => $post->id]) }}" class="btn btn-warning">
+                                    Modify
+                                </a>
+    
+                                <form action="{{ route('admin.posts.destroy' , ['post' => $post->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare il post?')">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button class="btn btn-danger" type="submit">
+                                        Elimina
+                                    </button>
+
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
